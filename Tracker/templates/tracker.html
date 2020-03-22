@@ -1,52 +1,27 @@
 {% extends 'index.html' %}
 {% block content %}
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
-        <a class="navbar-brand" href="{% url 'tracker' %}" ><strong>{{ user.email }}</strong></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'tracker' %}">Главная<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Тренировки</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Повседневные упражнения</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Упражнения</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Бег</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Выход</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
 <main>
+{% include 'header.html' %}
 {% load static %}
     <div class="container">
         <div class="row pt-5">
             <div class="card products col-xl-5" style="margin: 1%; padding-top:1%;">
                 <div class="text-center">
-                    <h3 class="text-center">Workcount</h3>
+                    <h3 class="text-center">{{ workoutCount }}</h3>
                 </div>
                 <h3 class="text-center">Количество тренировок</h3>
                 <div class="card-body text-center">
                     <p><img src="{% static 'workout.png' %}" alt="workout"></p>
-                    <a href="">Перейти к тренировкам</a>
+                    <a href="{% url 'workouts' %}">Перейти к тренировкам</a>
                 </div>
             </div>
             <div class="card products col-xl-5 " style="margin: 1%; padding-top:1%;">
                 <div class="text-center">
-                    <h3 class="text-center">Дата тренировки</h3>
+                    {% if data %}
+                    <h3 class="text-center">{{ data|date:"d.m.yy" }}</h3>
+                    {% else %}
+                    <h3 class="text-center">{{ workout_error }}</h3>
+                    {% endif %}
                 </div>
                 <h3 class="text-center">Ближайшая тренировка</h3>
                 <div class="card-body text-center">
