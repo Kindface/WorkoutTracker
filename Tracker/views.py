@@ -12,12 +12,11 @@ def check_auth(request):
         return redirect('/login')
     else:
         current_date = timezone.now() - timedelta(days=1)
-        print(current_date)
         workout_count = Workout.objects.exclude(date=current_date).filter(owner=request.user).count()
         distance_sum = Run.objects.filter(owner=request.user).aggregate(Sum('distance'))['distance__sum']
         nearest_date_workout = Workout.objects.exclude(date=current_date).filter(owner=request.user).order_by("date").first()
         nearest_date_run = Run.objects.exclude(date=current_date).filter(owner=request.user).order_by("date").first()
-        return render(request, 'tracker.html',{'date_workout': nearest_date_workout, 'workoutCount': workout_count, 'distance_sum': distance_sum,'date_run': nearest_date_run})
+        return render(request, 'tracker.html', {'date_workout': nearest_date_workout, 'workoutCount': workout_count, 'distance_sum': distance_sum, 'date_run': nearest_date_run})
 
         '''
         if nearest_date_workout or nearest_date_run:

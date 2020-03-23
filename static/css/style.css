@@ -28,7 +28,7 @@
   font-size: 14px;
   margin-bottom: 3%; }
 
-#id_password, #id_password1, #id_password2 {
+#id_password, #id_password1, #id_password2, #id_date, #id_distance, #id_time {
   width: 100%;
   border-radius: 5px;
   height: 40px;
@@ -52,6 +52,28 @@ a.navbar-dark {
   color: black; }
 
 .header-workouts {
+  border-bottom: 1px solid grey; }
+
+.add-run {
+  background: #ffffff;
+  box-shadow: 9px 9px 18px #c4c4c4, -9px -9px 18px #ffffff;
+  border-radius: 5px;
   border: 1px solid grey; }
+
+#id_description {
+  width: 100%;
+  border-radius: 5px;
+  height: 80%;
+  padding: 0 0 0 10px;
+  font-size: 14px; }
+
+.edit {
+  width: 10%;
+  height: auto;
+  margin-right: 1%; }
+
+.delete {
+  width: 10%;
+  height: auto; }
 
 /*# sourceMappingURL=style.css.map */

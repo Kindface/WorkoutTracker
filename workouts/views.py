@@ -13,6 +13,7 @@ class WorkoutListView(ListView):
         queryset = Workout.objects.filter(owner=user)
         return queryset
 
+
 class WorkoutCreateView(CreateView):
     model = Workout
     fields = ('date', 'description')

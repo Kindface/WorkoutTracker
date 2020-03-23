@@ -1,7 +1,8 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from .models import Run
 from django.http import HttpResponseRedirect, request
+from django.urls import reverse
 
 
 class RunListView(ListView):
@@ -25,3 +26,20 @@ class RunCreateView(CreateView):
         self.object.owner = self.request.user
         self.object.save()
         return HttpResponseRedirect(self.get_success_url())
+
+
+class RunDetailView(DetailView):
+    model = Run
+    template_name = 'run_detail.html'
+
+
+def delete_run(pk):
+    run = Run.objects.get(pk=pk).delete()
+    return HttpResponseRedirect(reverse('runs'))
+
+
+class RunUpdateView(UpdateView):
+    model = Run
+    fields = ('date', 'description', 'distance', 'time')
+    template_name = 'edit_run.html'
+
