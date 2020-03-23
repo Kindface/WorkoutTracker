@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'h11r_2h0k3_w+8-@t)@*vm)=(evj@%gf_$n+r@-yclvgy0(_5w'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# SECURITY WARNING: don't runs with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'Tracker.apps.TrackerConfig',
     'workouts.apps.WorkoutsConfig',
+    'runs.apps.RunConfig',
 ]
 
 MIDDLEWARE = [

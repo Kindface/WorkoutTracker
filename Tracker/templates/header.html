@@ -18,8 +18,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Упражнения</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Бег</a>
+                <li class="nav-item {% if request.path == '/runs' %}active {% endif %}">
+                    <a class="nav-link" href="{% url 'runs' %}">Бег</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Выход</a>

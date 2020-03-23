@@ -17,10 +17,10 @@
             </div>
             <div class="card products col-xl-5 " style="margin: 1%; padding-top:1%;">
                 <div class="text-center">
-                    {% if data %}
-                    <h3 class="text-center">{{ data|date:"d.m.yy" }}</h3>
+                    {% if date_workout %}
+                    <h3 class="text-center">{{ date_workout }}</h3>
                     {% else %}
-                    <h3 class="text-center">{{ workout_error }}</h3>
+                    <h3 class="text-center">Ближайших тренировок не найдено</h3>
                     {% endif %}
                 </div>
                 <h3 class="text-center">Ближайшая тренировка</h3>
@@ -31,17 +31,25 @@
             </div>
             <div class="card products col-xl-5 " style="margin: 1%; padding-top:1%;">
                 <div class="text-center">
-                    <h3 class="text-center">0 km</h3>
+                    {% if distance_sum %}
+                        <h3 class="text-center">{{ distance_sum }} km</h3>
+                    {% else %}
+                        <h3 class="text-center">0 km</h3>
+                    {% endif %}
                 </div>
                 <h3 class="text-center">Дистанция пробежек</h3>
                 <div class="card-body text-center">
                     <p><img src="{% static 'sprinter.png' %}" alt="sprinter"></p>
-                    <a href="">Перейти к пробежкам</a>
+                    <a href="{% url 'runs' %}">Перейти к пробежкам</a>
                 </div>
             </div>
             <div class="card products col-xl-5" style="margin: 1%; padding-top:1%;">
                 <div class="text-center">
-                    <h3 class="text-center">Дата пробежки</h3>
+                    {% if date_run %}
+                    <h3 class="text-center">{{ date_run }}</h3>
+                    {% else %}
+                    <h3 class="text-center">Ближайших пробежек не найдено</h3>
+                    {% endif %}
                 </div>
                 <h3 class="text-center">Ближайшая пробежка</h3>
                 <div class="card-body text-center">

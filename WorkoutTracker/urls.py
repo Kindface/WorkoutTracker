@@ -24,4 +24,5 @@ urlpatterns = [
     path('',include('Tracker.urls')),
     path('', include('accounts.urls')),
     path('', include('workouts.urls')),
+    path('', include('runs.urls'))
 ] + static(settings.STATIC_URL)
