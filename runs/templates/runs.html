@@ -4,17 +4,17 @@
 {% include 'header.html' %}
 <main>
     <div class="row pt-4 header-workouts">
-        <div class="col-8 text-center">
+        <div class="col text-center">
             <h3>Ваши пробежки</h3>
         </div>
-        <div class="col-3">
-            <a href="{% url 'add-run' %}"><button class="btn btn-primary">Добавить пробежку</button></a>
+        <div class="col">
+            <a href="{% url 'add-run' %}"><button class="btn btn-primary btn-add-run">Добавить пробежку</button></a>
         </div>
     </div>
     <div class="container">
         <div class="row pt-5">
             {% for run in object_list  %}
-                    <div class="card products col-xl-12" style="margin: 1%; padding-top:1%;">
+                    <div class="card queryset col-xl-12" style="margin: 1%; padding-top:1%;">
                         <div class="text-center">
                             <h3 class="text-center">{{ run.date }}</h3>
                             <a href="{% url 'delete-run' run.pk %}"><button class="btn btn-danger delete float-right" type="submit">Удалить</button></a>
@@ -28,6 +28,39 @@
                     </div>
             {% endfor %}
         </div>
+        {% if is_paginated %}
+            <div class="row justify-content-center">
+                <div>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="/runs?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% for num in paginator.page_range %}
+                                {% if num == page_obj.number %}
+                                    <li class="page-item active"><a class="page-link" href="">{{ num }}</a></li>
+                                {% else %}
+                                    <li class="page-item"><a class="page-link" href="/runs?page={{ num }}">{{ num }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="/runs?page={{ page_obj.next_page_number }}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        {% endif %}
     </div>
 </main>
 {% endblock %}

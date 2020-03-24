@@ -68,15 +68,16 @@ a.navbar-dark {
   font-size: 14px; }
 
 .edit {
-  width: 10%;
-  height: auto;
   margin-right: 1%; }
-
-.delete {
-  width: 10%;
-  height: auto; }
 
 .navbar-brand {
   font-weight: 600; }
+
+@media (max-width: 700px) {
+  .edit {
+    width: auto; }
+
+  .delete {
+    width: auto; } }
 
 /*# sourceMappingURL=style.css.map */

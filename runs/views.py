@@ -3,16 +3,19 @@ from django.views.generic.edit import CreateView, UpdateView
 from .models import Run
 from django.http import HttpResponseRedirect, request
 from django.urls import reverse
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 class RunListView(ListView):
     model = Run
     template_name = 'runs.html'
+    paginate_by = 2
 
     def get_queryset(self):
         user = self.request.user
-        queryset = Run.objects.filter(owner=user)
+        queryset = Run.objects.filter(owner=user).order_by("-date")
         return queryset
+
+
 
 
 class RunCreateView(CreateView):
