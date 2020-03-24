@@ -1,7 +1,7 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView
 from .models import Run
-from django.http import HttpResponseRedirect, request
+from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 
@@ -12,7 +12,7 @@ class RunListView(ListView):
 
     def get_queryset(self):
         user = self.request.user
-        queryset = Run.objects.filter(owner=user).order_by("-date")
+        queryset = Run.objects.filter(owner=user).order_by("-id")
         return queryset
 
 

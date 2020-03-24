@@ -12,8 +12,8 @@
                 <li class="nav-item {% if request.path == '/workouts' %}active {% endif %}">
                     <a class="nav-link" href="{% url 'workouts' %}">Тренировки</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">ИМТ</a>
+                <li class="nav-item {% if request.path == '/imts' or request.path == '/add-imt' %}active {% endif %}">
+                    <a class="nav-link" href="{% url 'imts' %}">ИМТ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Упражнения</a>
