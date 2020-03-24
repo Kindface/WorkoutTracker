@@ -3,7 +3,7 @@ from django.views.generic.edit import CreateView, UpdateView
 from .models import Run
 from django.http import HttpResponseRedirect, request
 from django.urls import reverse
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 class RunListView(ListView):
     model = Run

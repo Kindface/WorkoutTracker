@@ -13,6 +13,11 @@
     </div>
     <div class="container">
         <div class="row pt-5">
+            {% if not object_list %}
+                <div class="col-12 text-center">
+                    <h3> Пробежки не найдены</h3>
+                </div>
+            {% endif %}
             {% for run in object_list  %}
                     <div class="card queryset col-xl-12" style="margin: 1%; padding-top:1%;">
                         <div class="text-center">
