@@ -76,4 +76,7 @@ a.navbar-dark {
   width: 10%;
   height: auto; }
 
+.navbar-brand {
+  font-weight: 600; }
+
 /*# sourceMappingURL=style.css.map */
