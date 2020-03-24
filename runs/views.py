@@ -8,14 +8,12 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 class RunListView(ListView):
     model = Run
     template_name = 'runs.html'
-    paginate_by = 2
+    paginate_by = 5
 
     def get_queryset(self):
         user = self.request.user
         queryset = Run.objects.filter(owner=user).order_by("-date")
         return queryset
-
-
 
 
 class RunCreateView(CreateView):
@@ -36,7 +34,7 @@ class RunDetailView(DetailView):
     template_name = 'run_detail.html'
 
 
-def delete_run(pk):
+def delete_run(self, pk):
     run = Run.objects.get(pk=pk).delete()
     return HttpResponseRedirect(reverse('runs'))
 
