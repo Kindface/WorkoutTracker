@@ -29,11 +29,6 @@ class RunCreateView(CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
 
-class RunDetailView(DetailView):
-    model = Run
-    template_name = 'run_detail.html'
-
-
 def delete_run(self, pk):
     run = Run.objects.get(pk=pk).delete()
     return HttpResponseRedirect(reverse('runs'))
