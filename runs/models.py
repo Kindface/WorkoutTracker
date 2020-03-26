@@ -2,7 +2,7 @@ from django.db import models
 from accounts.models import CustomUser
 from django.utils import timezone
 from django.urls import reverse
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MinValueValidator
 
 
 class Run(models.Model):

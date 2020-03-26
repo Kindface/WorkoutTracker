@@ -16,7 +16,7 @@
             {% for workout in object_list  %}
             <div class="card products col-xl-12" style="margin: 1%; padding-top:1%;">
                 <div class="text-center">
-                    <h3 class="text-center">{{ workout.date }}</h3>
+                    <a href="{% url 'workout_detail' workout.pk %}" class="text-center">{{ workout.date }}</a>
                 </div>
                 <h3 class="text-center">Удалить/Изменить</h3>
                 <div class="card-body text-center">

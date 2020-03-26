@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% block title %}Ваша тренировка{% endblock %}
+{% block content %}
+<main>
+    <div class="row pt-4 header-workouts">
+        <div class="col-12 text-center">
+            <h3>Ваша тренировка</h3>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row pt-3 justify-content-center">
+            <div class="col-10 col-lg-4 add-run justify-items-center">
+                <div class="card-body">
+                    <div class="form-group">
+                        <h4>{{ object.date }}</h4>
+                        <h4>{{ object.description }}</h4>
+                        <h4>{{ workout.exercises.all|join:", " }}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %} 

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'workouts.apps.WorkoutsConfig',
     'runs.apps.RunConfig',
     'imts.apps.ImtsConfig',
+    'exercises.apps.ExercisesConfig'
 ]
 
 MIDDLEWARE = [

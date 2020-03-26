@@ -48,6 +48,7 @@ class ImtCreateView(CreateView):
         IMT.objects.create(owner=owner, height=abs(test), weight=abs(test2), imt=imt, result=result)
         return redirect('/imts')
 
+
 def delete_imt(self, pk):
     imt = IMT.objects.get(pk=pk).delete()
     return HttpResponseRedirect(reverse('imts'))
