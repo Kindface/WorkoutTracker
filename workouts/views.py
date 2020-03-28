@@ -3,6 +3,9 @@ from django.views.generic.edit import CreateView, UpdateView
 from .models import Workout
 from exercises.models import Exercise
 from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
+from .forms import WorkoutCreateForm
+from django.shortcuts import render
 
 
 class WorkoutListView(ListView):
@@ -14,6 +17,18 @@ class WorkoutListView(ListView):
         user = self.request.user
         queryset = Workout.objects.filter(owner=user).order_by("-id")
         return queryset
+'''
+def workoutCreate(request):
+    form = WorkoutCreateForm(request.user)
+    if form.is_valid():
+        date = request.POST.get("date")
+        print(date)
+        form.save()
+        return render(request, 'workouts.html', {'form': form})
+    else:
+        return render(request, 'workout_add.html', {'form': form})
+
+
 
 
 class WorkoutCreateView(CreateView):
@@ -27,6 +42,25 @@ class WorkoutCreateView(CreateView):
         self.object.owner = self.request.user
         self.object.save()
         return HttpResponseRedirect(self.get_success_url())
+'''
+
+
+class WorkoutCreateView(CreateView):
+    success_url = 'workouts'
+
+    def get(self, request, *args, **kwargs):
+        context = {'form': WorkoutCreateForm(user=request.user)}
+        return render(request, 'workout_add.html', context)
+
+    def post(self, request, *args, **kwargs):
+        form = WorkoutCreateForm(request.POST, user=request.user)
+        if form.is_valid():
+            workout = form.save(commit=False)
+            workout.owner = request.user
+            workout.save()
+            form.save_m2m()
+            return HttpResponseRedirect('workouts')
+        return render(request, 'workout_add.html', {'form': form})
 
 
 class WorkoutDetailView(DeleteView):
