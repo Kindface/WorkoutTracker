@@ -3,12 +3,14 @@ from django.views.generic.edit import CreateView, UpdateView
 from .models import Run
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.mixins import *
 
 
-class RunListView(ListView):
+class RunListView(LoginRequiredMixin, ListView):
     model = Run
     template_name = 'runs.html'
     paginate_by = 5
+    login_url = '/login'
 
     def get_queryset(self):
         user = self.request.user
@@ -16,11 +18,12 @@ class RunListView(ListView):
         return queryset
 
 
-class RunCreateView(CreateView):
+class RunCreateView(LoginRequiredMixin, CreateView):
     model = Run
     fields = ('date', 'description', 'distance', 'time')
     template_name = 'add_run.html'
     success_url = 'runs'
+    login_url = '/login'
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -30,12 +33,13 @@ class RunCreateView(CreateView):
 
 
 def delete_run(self, pk):
-    run = Run.objects.get(pk=pk).delete()
+    Run.objects.get(pk=pk).delete()
     return HttpResponseRedirect(reverse('runs'))
 
 
-class RunUpdateView(UpdateView):
+class RunUpdateView(LoginRequiredMixin, UpdateView):
     model = Run
     fields = ('date', 'description', 'distance', 'time')
     template_name = 'edit_run.html'
+    login_url = '/login'
 
