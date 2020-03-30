@@ -81,6 +81,9 @@ a.navbar-dark {
     width: auto; }
 
   .table thead {
+    font-size: small; }
+
+  #id_exercises {
     font-size: small; } }
 
 /*# sourceMappingURL=style.css.map */
