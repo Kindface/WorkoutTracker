@@ -4,19 +4,26 @@
 <main>
     <div class="row pt-4 header-workouts">
         <div class="col-12 text-center">
-            <h3>Ваша тренировка</h3>
+            <h3>{{ workout.date }}</h3>
         </div>
     </div>
     <div class="container">
         <div class="row pt-3 justify-content-center">
-            <div class="col-10 col-lg-4 add-run justify-items-center">
-                <div class="card-body">
-                    <div class="form-group">
-                        <h4>{{ object.date }}</h4>
-                        <h4>{{ object.description }}</h4>
-                        <h4>{{ workout.exercises.all|join:", " }}</h4>
-                    </div>
-                </div>
+            <div class="col-12 col-lg-12 add-run justify-items-center">
+               <table class="table">
+                <thead>
+                <th>Упражнения</th>
+                <th>Подходы</th>
+                <th>Повторения</th>
+                </thead>
+                   {% for item in object.exercises.all %}
+                       <tr>
+                           <td>{{ item.name}}</td>
+                           <td>{{ item.sets }}</td>
+                           <td>{{item.reps }}</td>
+                       </tr>
+                    {% endfor %}
+                </table>
             </div>
         </div>
     </div>

@@ -16,17 +16,18 @@
                 </div>
             </div>
             <div class="card products col-xl-5 " style="margin: 1%; padding-top:1%;">
-                <div class="text-center">
-                    {% if date_workout %}
-                    <h3 class="text-center">{{ date_workout }}</h3>
-                    {% else %}
-                    <h3 class="text-center">Ближайших тренировок не найдено</h3>
-                    {% endif %}
-                </div>
-                <h3 class="text-center">Ближайшая тренировка</h3>
+                {% if date_workout %}
+                    <div class="text-center">
+                        <h3 class="text-center">{{ date_workout }}</h3>
+                    </div>
+                    <h3 class="text-center">Ближайшая тренировка</h3>
+                {% else %}
+                    <div class="text-center">
+                        <h3 class="text-center">Ближайших тренировок не найдено</h3>
+                    </div>
+                {% endif %}
                 <div class="card-body text-center">
                     <p><img src="{% static '24-hours.png' %}" alt="hours"></p>
-                    <a href="">Посмотреть тренировку</a>
                 </div>
             </div>
             <div class="card products col-xl-5 " style="margin: 1%; padding-top:1%;">
@@ -44,17 +45,18 @@
                 </div>
             </div>
             <div class="card products col-xl-5" style="margin: 1%; padding-top:1%;">
-                <div class="text-center">
-                    {% if date_run %}
-                    <h3 class="text-center">{{ date_run }}</h3>
-                    {% else %}
-                    <h3 class="text-center">Ближайших пробежек не найдено</h3>
-                    {% endif %}
-                </div>
-                <h3 class="text-center">Ближайшая пробежка</h3>
+                {% if date_run %}
+                    <div class="text-center">
+                        <h3 class="text-center">{{ date_run }}</h3>
+                    </div>
+                    <h3 class="text-center">Ближайшая тренировка</h3>
+                {% else %}
+                    <div class="text-center">
+                        <h3 class="text-center">Ближайших тренировок не найдено</h3>
+                    </div>
+                {% endif %}                
                 <div class="card-body text-center">
                     <p><img src="{% static '24-hours.png' %}" alt="hours"></p>
-                    <a href="">Посмотреть пробежку</a>
                 </div>
             </div>
         </div>

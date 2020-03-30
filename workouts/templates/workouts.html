@@ -21,7 +21,7 @@
             {% for workout in object_list  %}
                     <div class="card queryset col-xl-12" style="margin: 1%; padding-top:1%;">
                         <div class="text-center">
-                            <a href="{% url 'workout_detail' workout.pk %}" class="text-center">{{ workout.date }}</a>
+                            <a href="{% url 'workout_detail' workout.pk %}"><h3 class="text-center">{{ workout.date }}</h3></a>
                             <a href="{% url 'delete-workout' workout.pk %}"><button class="btn btn-danger delete float-right" type="submit">Удалить</button></a>
                             <a href="{% url 'edit-workout' workout.pk %}"><button class="btn btn-secondary edit float-right" type="submit">Изменить</button></a>
                         </div>
