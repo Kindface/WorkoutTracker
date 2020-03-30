@@ -4,12 +4,14 @@ from .models import IMT
 from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.mixins import *
 
 
-class IMTListView(ListView):
+class IMTListView(LoginRequiredMixin, ListView):
     model = IMT
     template_name = 'imts.html'
     paginate_by = 5
+    login_url = '/login'
 
     def get_queryset(self):
         user = self.request.user
@@ -17,11 +19,12 @@ class IMTListView(ListView):
         return queryset
 
 
-class ImtCreateView(CreateView):
+class ImtCreateView(LoginRequiredMixin, CreateView):
     model = IMT
     fields = ('height', 'weight')
     template_name = 'add_imt.html'
     success_url = 'imts'
+    login_url = '/login'
 
     def post(self, request, *args, **kwargs):
         global result
@@ -50,7 +53,7 @@ class ImtCreateView(CreateView):
 
 
 def delete_imt(self, pk):
-    imt = IMT.objects.get(pk=pk).delete()
+    IMT.objects.get(pk=pk).delete()
     return HttpResponseRedirect(reverse('imts'))
 
 
