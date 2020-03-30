@@ -22,8 +22,8 @@
                     <div class="card queryset col-xl-12" style="margin: 1%; padding-top:1%;">
                         <div class="text-center">
                             <h3 class="text-center">{{ exercise.name }}</h3>
-                            <a href=""><button class="btn btn-danger delete float-right" type="submit">Удалить</button></a>
-                            <a href=""><button class="btn btn-secondary edit float-right" type="submit">Изменить</button></a>
+                            <a href="{% url 'delete-exercise' exercise.pk %}"><button class="btn btn-danger delete float-right" type="submit">Удалить</button></a>
+                            <a href="{% url 'edit-exercise' exercise.pk %}"><button class="btn btn-secondary edit float-right" type="submit">Изменить</button></a>
                         </div>
                         <div class="card-body text-center">
                             <p>Подходы: {{ exercise.sets }}</p>

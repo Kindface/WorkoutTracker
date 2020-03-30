@@ -1,6 +1,7 @@
 from django.db import models
 from accounts.models import CustomUser
 from django.core.validators import MinValueValidator
+from django.urls import reverse
 
 
 class Exercise(models.Model):
@@ -11,3 +12,6 @@ class Exercise(models.Model):
 
     def __str__(self):
         return '{} Подходов:{} Повторений:{}'.format(self.name, self.sets, self.reps)
+
+    def get_absolute_url(self):
+        return reverse('exercises')

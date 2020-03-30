@@ -15,4 +15,4 @@ class Workout(models.Model):
         return str(self.date)
 
     def get_absolute_url(self):
-        return reverse('runs')
+        return reverse('workouts')
