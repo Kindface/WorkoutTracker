@@ -40,5 +40,5 @@ def delete_exercise(self, pk):
 class ExerciseUpdateView(LoginRequiredMixin, UpdateView):
     model = Exercise
     fields = ('name', 'sets', 'reps')
-    template_name = 'edit_run.html'
+    template_name = 'edit_exercise.html'
     login_url = '/login'
