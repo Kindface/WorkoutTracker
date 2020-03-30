@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from accounts.models import CustomUser
 from exercises.models import Exercise
+from django.urls import reverse
 
 
 class Workout(models.Model):
@@ -13,4 +14,5 @@ class Workout(models.Model):
     def __str__(self):
         return str(self.date)
 
-
+    def get_absolute_url(self):
+        return reverse('runs')
