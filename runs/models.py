@@ -10,7 +10,7 @@ class Run(models.Model):
     description = models.TextField(verbose_name="Описание")
     distance = models.FloatField(verbose_name="Дистанция в км", validators=[MinValueValidator(0)])
     time = models.FloatField(verbose_name="Время бега в минутах", validators=[MinValueValidator(0)])
-    date = models.DateField(default=timezone.now, verbose_name="Дата бега")
+    date = models.DateField(default=timezone.now, verbose_name="Дата пробежки")
 
     def __str__(self):
         return str(self.date)
