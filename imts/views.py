@@ -28,12 +28,10 @@ class ImtCreateView(LoginRequiredMixin, CreateView):
 
     def post(self, request, *args, **kwargs):
         global result
-        weight = request.POST.get("weight")
-        height = request.POST.get("height")
+        weight = float(request.POST.get("weight"))
+        height = float(request.POST.get("height"))
         owner = request.user
-        test = float(weight)
-        test2 = float(height)
-        imt = round(abs(test)/(pow(test2, 2)/10000), 1)
+        imt = round(abs(weight)/(pow(height, 2)/10000), 1)
         if imt < 16:
             result = "Выраженный дефицит массы тела"
         elif 16 < imt < 18.5:
@@ -48,7 +46,7 @@ class ImtCreateView(LoginRequiredMixin, CreateView):
             result = "Ожирение второй степени"
         elif imt > 40:
             result = "Ожирение третьей степени"
-        IMT.objects.create(owner=owner, height=abs(test), weight=abs(test2), imt=imt, result=result)
+        IMT.objects.create(owner=owner, height=abs(height), weight=abs(weight), imt=imt, result=result)
         return redirect('/imts')
 
 
